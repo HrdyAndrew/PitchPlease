@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="tech.pitchplease.pitchplease.MenuActivity">
+    tools:context="tech.pitchplease.pitchplease.MenuActivity"
+    tools:background="@color/colorPrimaryDark">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/appBarLayout">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -24,11 +26,66 @@
     <include layout="@layout/content_menu" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fabPreferences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_menu_preferences"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        app:backgroundTint="@color/colorAccent"
+        app:rippleColor="@color/colorRipple" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:text="Pitch Guesser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnPitchPlayer"
+        android:layout_alignRight="@+id/btnPitchPlayer"
+        android:layout_alignEnd="@+id/btnPitchPlayer"
+        android:layout_marginTop="30dp"
+        android:id="@+id/btnPitchGuesser"
+        android:width="250dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText" />
+
+    <Button
+        android:text="Interval Guesser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnPitchGuesser"
+        android:layout_alignLeft="@+id/btnPitchGuesser"
+        android:layout_alignStart="@+id/btnPitchGuesser"
+        android:layout_marginTop="30dp"
+        android:id="@+id/btnIntervalGuesser"
+        android:width="250dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/btnCompGuesser"
+        android:width="250dp"
+        android:layout_below="@+id/btnIntervalGuesser"
+        android:layout_alignLeft="@+id/btnIntervalGuesser"
+        android:layout_alignStart="@+id/btnIntervalGuesser"
+        android:text="Composer Guesser"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText" />
+
+    <Button
+        android:text="Pitch Player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:id="@+id/btnPitchPlayer"
+        tools:width="250dp"
+        android:layout_below="@+id/appBarLayout"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText" />
+
+</RelativeLayout>

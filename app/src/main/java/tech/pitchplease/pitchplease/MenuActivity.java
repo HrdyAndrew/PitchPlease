@@ -1,24 +1,30 @@
 package tech.pitchplease.pitchplease;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MenuActivity extends AppCompatActivity {
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        context = this;
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPreferences);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +32,11 @@ public class MenuActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //createViewActivitySwitch(R.id.btnPitchPlayer, ClassName.class, "MyTag", new String[]{});
+        //createViewActivitySwitch(R.id.btnPitchGuesser, ClassName.class, "MyTag", new String[]{});
+        //createViewActivitySwitch(R.id.btnIntervalGuesser, ClassName.class, "MyTag", new String[]{});
+        //createViewActivitySwitch(R.id.btnCompGuesser, ClassName.class, "MyTag", new String[]{});
     }
 
     @Override
@@ -48,5 +59,30 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Creates an on click event tied to the {@link View} to change the current activity (window).
+     *
+     * @param view     The view to attach the onclick listener to.
+     * @param activity The class that contains the targeted activity.
+     * @param tagName  The base name for the state variables.
+     * @param states   State variables to pass to the new activity.
+     *                 <p>
+     *                 State variables will be passed with the following tag: tagName + [index of state in states]
+     *                 Example: tagName = "tag", states = {"Hi", "There", "Friend"}
+     *                 Three tags will exist: tag0 -> "Hi", tag1 -> "There", tag2 -> "Friend"
+     */
+    private void createViewActivitySwitch(View view, final Class activity, final String tagName, final String... states) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, activity);
+                for (int i = 0; i < states.length; i++) {
+                    intent.putExtra(tagName + i, states[i]);
+                }
+                context.startActivity(intent);
+            }
+        });
     }
 }
