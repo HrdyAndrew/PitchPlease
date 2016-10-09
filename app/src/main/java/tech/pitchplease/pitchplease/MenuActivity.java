@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+
 public class MenuActivity extends AppCompatActivity {
     private Context context;
 
@@ -21,7 +22,6 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         context = this;
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPreferences);
