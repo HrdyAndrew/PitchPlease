@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app2=""
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_composer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tech.pitchplease.pitchplease.composer.ComposerActivity">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:id="@+id/textView"
+        tools:text="Select the composer that wrote the song."
+        android:textAllCaps="false"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:id="@+id/btnStart"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStart"
+        android:layout_toLeftOf="@+id/btnStart"
+        android:layout_toStartOf="@+id/btnStart"
+        android:layout_marginTop="51dp"
+        android:id="@+id/btnOne"
+        android:visibility="invisible" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTwo"
+        android:layout_alignBaseline="@+id/btnOne"
+        android:layout_alignBottom="@+id/btnOne"
+        android:layout_toRightOf="@+id/btnStart"
+        android:layout_toEndOf="@+id/btnStart"
+        android:visibility="invisible" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnOne"
+        android:layout_alignLeft="@+id/btnOne"
+        android:layout_alignStart="@+id/btnOne"
+        android:layout_marginTop="59dp"
+        android:id="@+id/btnThree"
+        android:visibility="invisible" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnThree"
+        android:layout_alignLeft="@+id/btnTwo"
+        android:layout_alignStart="@+id/btnTwo"
+        android:id="@+id/btnFour"
+        android:visibility="invisible" />
+
+    <ProgressBar
+        style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="42dp"
+        android:id="@+id/barCountdown"
+        android:indeterminate="false"
+        android:progress="30"
+        android:minWidth="148dip"
+        android:maxWidth="148dip"
+        android:max="30" />
+</RelativeLayout>

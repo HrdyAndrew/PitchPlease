@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import tech.pitchplease.pitchplease.composer.ComposerActivity;
+
 
 public class MenuActivity extends AppCompatActivity {
     private Context context;
@@ -36,7 +38,7 @@ public class MenuActivity extends AppCompatActivity {
         //createViewActivitySwitch(R.id.btnPitchPlayer, ClassName.class, "MyTag", new String[]{});
         //createViewActivitySwitch(R.id.btnPitchGuesser, ClassName.class, "MyTag", new String[]{});
         //createViewActivitySwitch(R.id.btnIntervalGuesser, ClassName.class, "MyTag", new String[]{});
-        //createViewActivitySwitch(R.id.btnCompGuesser, ClassName.class, "MyTag", new String[]{});
+        createViewActivitySwitch(findViewById(R.id.btnCompGuesser), ComposerActivity.class, "composerTag", new String[]{});
     }
 
     @Override
