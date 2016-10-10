@@ -125,10 +125,10 @@ public class ComposerActivity extends AppCompatActivity {
         while (btnComposer == btnAlt1) {
             btnAlt1 = btnSelections[(int) (Math.random() * btnSelections.length)];
         }
-        while (btnComposer == btnAlt2) {
+        while (btnComposer == btnAlt2 || btnAlt1 == btnAlt2) {
             btnAlt2 = btnSelections[(int) (Math.random() * btnSelections.length)];
         }
-        while (btnComposer == btnAlt3) {
+        while (btnComposer == btnAlt3 || btnAlt1 == btnAlt3 || btnAlt2 == btnAlt3) {
             btnAlt3 = btnSelections[(int) (Math.random() * btnSelections.length)];
         }
 
