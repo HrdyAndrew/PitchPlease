@@ -21,6 +21,9 @@ android {
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
     flatDir{
         dirs 'libs'
     }
@@ -35,9 +38,5 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     testCompile 'junit:junit:4.12'
 
-    // This library handles authentication and authorization
-    compile 'com.spotify.sdk:spotify-auth:beta23-noconnect-2.20b@aar'
-
-    // This library handles music playback
-    compile 'com.spotify.sdk:spotify-player:beta23-noconnect-2.20b@aar'
+    compile 'com.github.kaaes:spotify-web-api-android:0.4.1'
 }

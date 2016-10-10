@@ -1,5 +1,8 @@
 package tech.pitchplease.pitchplease.composer;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -13,9 +16,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import kaaes.spotify.webapi.android.SpotifyApi;
+import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.Album;
+import kaaes.spotify.webapi.android.models.Pager;
+import kaaes.spotify.webapi.android.models.Track;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import tech.pitchplease.pitchplease.R;
 
-public class ComposerActivity extends AppCompatActivity {
+public class ComposerActivity extends AppCompatActivity{
     private Button btnStart;
     private Button btnOne;
     private Button btnTwo;
@@ -26,6 +37,8 @@ public class ComposerActivity extends AppCompatActivity {
     private CountDownTimer countDown;
 
     private Map<String, String> composers;
+    private SpotifyService spotify;
+    private MediaPlayer mPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +52,8 @@ public class ComposerActivity extends AppCompatActivity {
         btnFour = (Button)findViewById(R.id.btnFour);
         barCountdown = (ProgressBar)findViewById(R.id.barCountdown);
 
-        countDown = createCountdownTimer(30000, 1000);
-        composers = resolveComposerMap();
+        //countDown = createCountdownTimer(30000, 1000);
+        //composers = resolveComposerMap();
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +62,12 @@ public class ComposerActivity extends AppCompatActivity {
                 countDown.start();
             }
         });
+
+        SpotifyApi api = new SpotifyApi();
+        mPlayer = new MediaPlayer();
+        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+        spotify = api.getService();
     }
 
     private void renderGameIcons(boolean bool) {
@@ -96,5 +115,39 @@ public class ComposerActivity extends AppCompatActivity {
         }
 
         return composers;
+    }
+
+    private void playRandomTrackFromArtist(String artistID) {
+        spotify.getArtistAlbums(artistID, new Callback<Pager<Album>>() {
+            @Override
+            public void success(Pager<Album> albumPager, Response response) {
+                Album album = albumPager.items.get((int)(Math.random() * albumPager.items.size()));
+                spotify.getAlbumTracks(album.id, new Callback<Pager<Track>>() {
+                    @Override
+                    public void success(Pager<Track> trackPager, Response response) {
+                        Track track = trackPager.items.get((int) (Math.random() * trackPager.items.size()));
+                        try {
+                            mPlayer.setDataSource(getApplicationContext(), Uri.parse(track.preview_url));
+                            mPlayer.prepare();
+                            mPlayer.start();
+                        } catch (IOException e) {
+                            System.out.println("IOEX");
+                        }
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        //TODO
+                        System.out.println("FAILURE");
+                    }
+                });
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                //TODO
+                System.out.println("FAILURE");
+            }
+        });
     }
 }
