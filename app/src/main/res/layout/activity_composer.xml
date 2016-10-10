@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_composer"
     android:layout_width="match_parent"
@@ -10,17 +9,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="tech.pitchplease.pitchplease.composer.ComposerActivity">
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:id="@+id/textView"
-        tools:text="Select the composer that wrote the song."
-        android:textAllCaps="false"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Start"
@@ -75,16 +63,37 @@
         android:visibility="invisible" />
 
     <ProgressBar
-        style="@android:style/Widget.Holo.Light.ProgressBar.Large"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="42dp"
         android:id="@+id/barCountdown"
-        android:indeterminate="false"
         android:progress="30"
         android:minWidth="148dip"
         android:maxWidth="148dip"
-        android:max="30" />
+        android:max="30"
+        android:indeterminate="false"
+        android:visibility="invisible" />
+
+    <TextView
+        android:text="Score: 0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/textScore" />
+
+    <TextView
+        android:text="Select the composer that wrote the song."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:id="@+id/textView"
+        android:textAllCaps="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/btnTwo"
+        android:layout_alignEnd="@+id/btnTwo" />
 </RelativeLayout>
