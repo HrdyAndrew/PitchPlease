@@ -110,10 +110,10 @@ public class ComposerActivity extends AppCompatActivity {
         while (composer.equals(alt1)) {
             alt1 = (String) keys[(int) (Math.random() * keys.length)];
         }
-        while (composer.equals(alt2)) {
+        while (composer.equals(alt2) || alt1.equals(alt2)) {
             alt2 = (String) keys[(int) (Math.random() * keys.length)];
         }
-        while (composer.equals(alt3)) {
+        while (composer.equals(alt3) || alt1.equals(alt3) || alt2.equals(alt3)) {
             alt3 = (String) keys[(int) (Math.random() * keys.length)];
         }
 
