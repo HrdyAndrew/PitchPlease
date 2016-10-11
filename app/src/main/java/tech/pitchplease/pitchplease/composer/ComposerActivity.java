@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -98,7 +98,8 @@ public class ComposerActivity extends AppCompatActivity {
     }
 
     private void startRound() {
-        animateProgressBar(30);
+        barCountdown.setProgress(300000);
+        animateProgressBar(0, 29000);
         textScore.setText("Score: " + score + "/" + rounds);
         mPlayer.stop();
         Object[] keys = composers.keySet().toArray();
@@ -145,7 +146,7 @@ public class ComposerActivity extends AppCompatActivity {
     }
 
     private void renderGameIcons(boolean bool) {
-        btnStart.setVisibility(bool ? View.INVISIBLE : View.VISIBLE);
+        btnStart.setVisibility(bool ? View.GONE : View.GONE);
         for (Button btn : btnSelections) {
             btn.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
         }
@@ -156,8 +157,6 @@ public class ComposerActivity extends AppCompatActivity {
         return new CountDownTimer(milliseconds, tickInterval) {
             @Override
             public void onTick(long millisUntilFinished) {
-                int progress = (int)millisUntilFinished/1000;
-                animateProgressBar(progress <=0 ? 30 : progress);
             }
 
             @Override
@@ -167,10 +166,10 @@ public class ComposerActivity extends AppCompatActivity {
         };
     }
 
-    private void animateProgressBar(int progress) {
+    private void animateProgressBar(int progress, int duration) {
         ObjectAnimator animation = ObjectAnimator.ofInt(barCountdown, "progress", progress);
-        animation.setDuration(500);
-        animation.setInterpolator(new DecelerateInterpolator());
+        animation.setDuration(duration);
+        animation.setInterpolator(new LinearInterpolator());
         animation.start();
     }
 
