@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">PitchPlease</string>
     <string name="action_settings">Settings</string>
+    <string name="pitch_player_title">Pitch Player</string>
+    <string name="pitch_training_title">Pitch Training</string>
+    <string name="interval_training_title">Interval Training</string>
+    <string name="composer_id_title">Composer ID</string>
     <string name="composers">﻿Johann_Sebastian_Bach
 5aIqB5nVVvmFsvSdExz408
 

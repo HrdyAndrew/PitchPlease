@@ -38,7 +38,7 @@
         app:rippleColor="@color/colorRipple" />
 
     <Button
-        android:text="Pitch Guesser"
+        android:text="@string/pitch_training_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnPitchPlayer"
@@ -51,7 +51,7 @@
         android:textColor="@color/colorText" />
 
     <Button
-        android:text="Interval Guesser"
+        android:text="@string/interval_training_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnPitchGuesser"
@@ -72,12 +72,12 @@
         android:layout_below="@+id/btnIntervalGuesser"
         android:layout_alignLeft="@+id/btnIntervalGuesser"
         android:layout_alignStart="@+id/btnIntervalGuesser"
-        android:text="Composer Guesser"
+        android:text="@string/composer_id_title"
         android:background="@color/colorAccent"
         android:textColor="@color/colorText" />
 
     <Button
-        android:text="Pitch Player"
+        android:text="@string/pitch_player_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
