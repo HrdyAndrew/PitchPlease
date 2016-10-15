@@ -2,6 +2,7 @@ package tech.pitchplease.pitchplease;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,6 +26,9 @@ public class MenuActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context = this;
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPreferences);
         fab.setOnClickListener(new View.OnClickListener() {

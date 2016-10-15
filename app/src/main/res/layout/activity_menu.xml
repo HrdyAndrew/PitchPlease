@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="tech.pitchplease.pitchplease.MenuActivity"
-    tools:background="@color/colorPrimaryDark">
+    tools:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimaryDark">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
