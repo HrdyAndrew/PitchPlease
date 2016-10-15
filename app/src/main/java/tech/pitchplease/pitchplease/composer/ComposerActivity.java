@@ -142,7 +142,6 @@ public class ComposerActivity extends AppCompatActivity {
             answerTitle.setText("Correct!");
         else
             answerTitle.setText("Incorrect!");
-        if (composer.equals("John_Adams"))
         answerMessage.setText(Html.fromHtml("The piece is <b>" + trackName + "</b> by " +
                 "<a href=\"http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" + (composer.replaceAll("_"," ").equals("John Adams") ? composer.replaceAll("_", " ") + " (composer)": composer.replaceAll("_", " ")) + "\"><b>" + composer.replaceAll("_", " ") + "</b></a>"));
         answerMessage.setMovementMethod(LinkMovementMethod.getInstance());
@@ -211,9 +210,9 @@ public class ComposerActivity extends AppCompatActivity {
     private void renderGameIcons(boolean bool) {
         btnStart.setVisibility(View.GONE);
         for (Button btn : btnSelections) {
-            btn.setVisibility(bool ? View.VISIBLE : View.GONE);
+            btn.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
         }
-        barCountdown.setVisibility(bool ? View.VISIBLE : View.GONE);
+        barCountdown.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
     }
 
     private CountDownTimer createCountdownTimer(long milliseconds, long tickInterval) {
