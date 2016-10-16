@@ -12,6 +12,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import tech.pitchplease.pitchplease.composer.ComposerActivity;
 
 
@@ -21,8 +25,14 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_menu);
+
+        //ads
+        MobileAds.initialize(getApplicationContext(), getResources().getString(R.string.banner_ad_unit_id));
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context = this;
@@ -42,7 +52,7 @@ public class MenuActivity extends AppCompatActivity {
         //createViewActivitySwitch(R.id.btnPitchPlayer, ClassName.class, "MyTag", new String[]{});
         //createViewActivitySwitch(R.id.btnPitchGuesser, ClassName.class, "MyTag", new String[]{});
         //createViewActivitySwitch(R.id.btnIntervalGuesser, ClassName.class, "MyTag", new String[]{});
-        createViewActivitySwitch(findViewById(R.id.btnCompGuesser), ComposerActivity.class, "composerTag", new String[]{});
+        createViewActivitySwitch(findViewById(R.id.btnCompGuesser), ComposerActivity.class, "composerTag"/*, new String[]{}*/);
     }
 
     @Override
