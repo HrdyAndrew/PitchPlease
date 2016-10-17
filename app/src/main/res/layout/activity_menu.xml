@@ -2,11 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="tech.pitchplease.pitchplease.MenuActivity"
-    tools:background="@color/colorPrimaryDark">
+    tools:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimaryDark">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -38,7 +40,7 @@
         app:rippleColor="@color/colorRipple" />
 
     <Button
-        android:text="Pitch Guesser"
+        android:text="@string/pitch_training_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnPitchPlayer"
@@ -51,7 +53,7 @@
         android:textColor="@color/colorText" />
 
     <Button
-        android:text="Interval Guesser"
+        android:text="@string/interval_training_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnPitchGuesser"
@@ -72,12 +74,12 @@
         android:layout_below="@+id/btnIntervalGuesser"
         android:layout_alignLeft="@+id/btnIntervalGuesser"
         android:layout_alignStart="@+id/btnIntervalGuesser"
-        android:text="Composer Guesser"
+        android:text="@string/composer_id_title"
         android:background="@color/colorAccent"
         android:textColor="@color/colorText" />
 
     <Button
-        android:text="Pitch Player"
+        android:text="@string/pitch_player_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
@@ -87,5 +89,17 @@
         android:layout_centerHorizontal="true"
         android:background="@color/colorAccent"
         android:textColor="@color/colorText" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        android:layout_above="@+id/fabPreferences"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:visibility="visible">
+    </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>
