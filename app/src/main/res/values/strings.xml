@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PitchPlease</string>
+    <string name="app_name">Pitch, Please</string>
     <string name="action_settings">Settings</string>
     <string name="pitch_player_title">Pitch Player</string>
     <string name="pitch_training_title">Pitch Training</string>
