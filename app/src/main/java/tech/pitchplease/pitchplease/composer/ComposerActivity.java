@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
@@ -121,6 +122,11 @@ public class ComposerActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Creates and displays the answer screen.
+     *
+     * @param correct Determines if the answer screen should display correct or incorrect.
+     */
     private void startAnswer(boolean correct) {
         countDown.cancel();
         if (correct)
@@ -143,10 +149,13 @@ public class ComposerActivity extends AppCompatActivity {
         else
             answerTitle.setText("Incorrect!");
         answerMessage.setText(Html.fromHtml("The piece is <b>" + trackName + "</b> by " +
-                "<a href=\"http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" + (composer.replaceAll("_"," ").equals("John Adams") ? composer.replaceAll("_", " ") + " (composer)": composer.replaceAll("_", " ")) + "\"><b>" + composer.replaceAll("_", " ") + "</b></a>"));
+                "<a href=\"http://en.wikipedia.org/w/index.php?title=Special%3ASearch&search=" + (composer.replaceAll("_", " ").equals("John Adams") ? composer.replaceAll("_", " ") + " (composer)" : composer.replaceAll("_", " ")) + "\"><b>" + composer.replaceAll("_", " ") + "</b></a>"));
         answerMessage.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
+    /**
+     * Starts a round of the Composer guessing game.
+     */
     private void startRound() {
         mPlayer.stop();
         barCountdown.setProgress(PLAY_TIME * 10000);
@@ -207,14 +216,26 @@ public class ComposerActivity extends AppCompatActivity {
         return num;
     }
 
+    /**
+     * Renders icons for base playing screen
+     *
+     * @param bool If true sets icons for game playing state, else sets to start state.
+     */
     private void renderGameIcons(boolean bool) {
-        btnStart.setVisibility(View.GONE);
+        btnStart.setVisibility(bool ? View.VISIBLE : View.GONE);
         for (Button btn : btnSelections) {
             btn.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
         }
         barCountdown.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
     }
 
+    /**
+     * Creates a new cooldown timer based on the passed params. Timer will end the round if time runs out.
+     *
+     * @param milliseconds Length in milliseconds for each iteration of the timer.
+     * @param tickInterval Calls the onTick method this often (in milliseconds).
+     * @return A new instance of {@link CountDownTimer}.
+     */
     private CountDownTimer createCountdownTimer(long milliseconds, long tickInterval) {
         return new CountDownTimer(milliseconds, tickInterval) {
             @Override
@@ -228,18 +249,25 @@ public class ComposerActivity extends AppCompatActivity {
         };
     }
 
+    @Override
     public void onStop() {
         try {
             mPlayer.stop();
             mPlayer.release();
             mPlayer = null;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         super.onStop();
     }
 
+    /**
+     * Smoothly animates the progress bar to a designated progress over a designated period of time.
+     *
+     * @param progress Progress to animate to.
+     * @param duration Duration (in milliseconds) of the animation.
+     */
     private void animateProgressBar(int progress, int duration) {
         ObjectAnimator animation = ObjectAnimator.ofInt(barCountdown, "progress", progress);
         animation.setDuration(duration);
@@ -247,6 +275,11 @@ public class ComposerActivity extends AppCompatActivity {
         animation.start();
     }
 
+    /**
+     * Creates a {@link Map} of Composer to Spotify Artist ID based on the composers string (found in strings.xml).
+     *
+     * @return A {@link Map} of Composer to ID.
+     */
     private Map<String, String> resolveComposerMap() {
         Map<String, String> composers = new HashMap<>();
 
@@ -258,6 +291,11 @@ public class ComposerActivity extends AppCompatActivity {
         return composers;
     }
 
+    /**
+     * Plays a random track from any of the artist's spotify albums.
+     *
+     * @param artistID The SPOTIFY artist ID to play a random track for.
+     */
     private void playRandomTrackFromArtist(final String artistID) {
         spotify.getArtistAlbums(artistID, new Callback<Pager<Album>>() {
             @Override
@@ -284,20 +322,24 @@ public class ComposerActivity extends AppCompatActivity {
 
                     @Override
                     public void failure(RetrofitError error) {
-                        //TODO
-                        System.out.println("FAILURE");
+                        Log.e("PitchPlease_TrackPlayer", "Failure resolving a track to play.");
                     }
                 });
             }
 
             @Override
             public void failure(RetrofitError error) {
-                //TODO
-                System.out.println("FAILURE");
+                Log.e("PitchPlease_AlbumPlayer", "Failure resolving a album to play.");
+
             }
         });
     }
 
+    /**
+     * Returns the correct artist for the current round.
+     *
+     * @return A string of the correct artist's name.
+     */
     private String getCorrectArtist() {
         return correctArtist;
     }
