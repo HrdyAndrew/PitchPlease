@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".composer.ComposerActivity"></activity>
+        <activity android:name=".composer.ComposerActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

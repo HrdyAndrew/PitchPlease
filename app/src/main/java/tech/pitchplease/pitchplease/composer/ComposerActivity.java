@@ -3,7 +3,6 @@ package tech.pitchplease.pitchplease.composer;
 import android.animation.ObjectAnimator;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +47,6 @@ public class ComposerActivity extends AppCompatActivity {
     private String correctArtist = "";
     private int score = 0;
     private int rounds = 0;
-    private int sessionID = 0;
 
     private final int PLAY_TIME = 30; //play time in seconds
     private Random rand;
@@ -82,9 +80,7 @@ public class ComposerActivity extends AppCompatActivity {
         mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                if (mp == mPlayer) {
-                    mPlayer.start();
-                }
+                mPlayer.start();
             }
         });
 
@@ -117,7 +113,6 @@ public class ComposerActivity extends AppCompatActivity {
 
         if (started) {
             renderGameIcons(true);
-            mPlayer.stop();
             startRound();
         }
     }
@@ -157,7 +152,6 @@ public class ComposerActivity extends AppCompatActivity {
      * Starts a round of the Composer guessing game.
      */
     private void startRound() {
-        mPlayer.stop();
         barCountdown.setProgress(PLAY_TIME * 10000);
         textScore.setText("Score: " + score + "/" + rounds);
         LinkedList<String> keys = new LinkedList<>();
@@ -222,7 +216,7 @@ public class ComposerActivity extends AppCompatActivity {
      * @param bool If true sets icons for game playing state, else sets to start state.
      */
     private void renderGameIcons(boolean bool) {
-        btnStart.setVisibility(bool ? View.VISIBLE : View.GONE);
+        btnStart.setVisibility(bool ? View.GONE : View.VISIBLE);
         for (Button btn : btnSelections) {
             btn.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
         }
@@ -311,12 +305,11 @@ public class ComposerActivity extends AppCompatActivity {
                             return;
                         }
                         try {
-                            mPlayer.setAudioSessionId(++sessionID);
-                            mPlayer.setDataSource(getApplicationContext(), Uri.parse(track.preview_url));
-                            mPlayer.prepare();
-                            mPlayer.start();
+                            mPlayer.reset();
+                            mPlayer.setDataSource(track.preview_url);
+                            mPlayer.prepareAsync();
                         } catch (IOException e) {
-                            System.out.println("IOEX");
+                            Log.e("PitchPlease_MediaPlayer", "Failure playing the track.");
                         }
                     }
 
@@ -330,7 +323,6 @@ public class ComposerActivity extends AppCompatActivity {
             @Override
             public void failure(RetrofitError error) {
                 Log.e("PitchPlease_AlbumPlayer", "Failure resolving a album to play.");
-
             }
         });
     }
