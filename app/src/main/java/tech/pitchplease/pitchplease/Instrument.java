@@ -40,6 +40,10 @@ public enum Instrument {
         return transposition - 12;
     }
 
+    public int getTransposition() {
+        return transposition;
+    }
+
     //    public static int transposePitch(int pitch, Instrument instrument, boolean up){
     //        pitch += instrument.getTransposition(up);
     //        if(pitch )
@@ -60,4 +64,34 @@ public enum Instrument {
         return comparator;
     }
 
+    public static Instrument getInstrumentFromValue(int noteValue) {
+        switch (noteValue) {
+            case 0:
+                return C;
+            case 1:
+                return Db;
+            case 2:
+                return D;
+            case 3:
+                return Eb;
+            case 4:
+                return E;
+            case 5:
+                return F;
+            case 6:
+                return Gb;
+            case 7:
+                return G;
+            case 8:
+                return Ab;
+            case 9:
+                return A;
+            case 10:
+                return Bb;
+            case 11:
+                return B;
+            default:
+                return C;
+        }
+    }
 }
