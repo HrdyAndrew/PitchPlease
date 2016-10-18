@@ -15,6 +15,10 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -60,6 +64,13 @@ public class ComposerActivity extends AppCompatActivity {
         if (!started)
             super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_composer);
+
+        /* //ads
+        MobileAds.initialize(getApplicationContext(), getResources().getString(R.string.banner_ad_unit_id));
+        final AdView mAdView = (AdView) findViewById(R.id.adView);
+        final AdRequest adRequest = new AdRequest.Builder().build();
+        */
+
         rand = new Random();
 
         btnSelections = new Button[4];
@@ -94,6 +105,7 @@ public class ComposerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 started = true;
                 renderGameIcons(true);
+                //mAdView.loadAd(adRequest);
                 startRound();
             }
         });
