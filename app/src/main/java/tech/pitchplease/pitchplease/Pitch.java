@@ -138,4 +138,38 @@ public class Pitch {
         this.pitchName = pitch;
     }
 
+    public static PitchName getPitchFromTransposition(int transposition) {
+        if(transposition < 0) {
+            throw new IllegalArgumentException("Transposition must be greater than or equal to 0");
+        }
+        switch (transposition) {
+            case 0:
+                return PitchName.C;
+            case 1:
+                return PitchName.Db;
+            case 2:
+                return PitchName.D;
+            case 3:
+                return PitchName.Eb;
+            case 4:
+                return PitchName.E;
+            case 5:
+                return PitchName.F;
+            case 6:
+                return PitchName.Gb;
+            case 7:
+                return PitchName.G;
+            case 8:
+                return PitchName.Ab;
+            case 9:
+                return PitchName.A;
+            case 10:
+                return PitchName.Bb;
+            case 11:
+                return PitchName.B;
+            default:
+                return getPitchFromTransposition(transposition - 12);
+        }
+    }
+
 }

@@ -11,7 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import tech.pitchplease.pitchplease.Instrument;
+import tech.pitchplease.pitchplease.Pitch;
 import tech.pitchplease.pitchplease.R;
 
 public class PitchTrainingActivity extends AppCompatActivity {
@@ -23,7 +23,7 @@ public class PitchTrainingActivity extends AppCompatActivity {
     private Button btnSubmit;
     private CountDownTimer countdown;
 
-    private Instrument correctPitch;
+    private Pitch correctPitch;
     private int score = 0;
     private int rounds = 0;
 
@@ -44,7 +44,7 @@ public class PitchTrainingActivity extends AppCompatActivity {
         noteSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                noteText.setText(Instrument.getInstrumentFromValue(progress).name());
+                noteText.setText(Pitch.getPitchFromTransposition(progress).name());
             }
 
             @Override
@@ -69,7 +69,7 @@ public class PitchTrainingActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (noteSeekBar.getProgress() == correctPitch.getTransposition()) {
+                if (Pitch.getPitchFromTransposition(noteSeekBar.getProgress()) == correctPitch.getPitchName()) {
                     score++;
                 }
                 startRound();
@@ -105,9 +105,9 @@ public class PitchTrainingActivity extends AppCompatActivity {
         rounds++;
     }
 
-    private Instrument playRandomPitch() {
+    private Pitch playRandomPitch() {
         //TODO Actually play something..
-        return Instrument.C;
+        return new Pitch(0, Pitch.PitchName.C);
     }
 
     /**
