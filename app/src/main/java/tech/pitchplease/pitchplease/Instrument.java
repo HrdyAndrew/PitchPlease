@@ -10,7 +10,7 @@ public enum Instrument {
     E(4, "E Instrument"),
     F(5, "F Instrument"), DESCANT_HORN(5, "Descant Horn"), FRENCH_HORN(5, "French Horn"), MELLOPHONE(5), BASSET_HORN(5, "Basset Horn"), ENGLISH_HORN(5, "French Horn"),
     Gb(6, "Gb Instrument"), F$(6, "F# Instrument"),
-    G(7, "G Instrument"), SOPRANO_RECORDER(7, "Soprano Recorder"), ALTO_FLUTE(7 ,"Alto Flute"),
+    G(7, "G Instrument"), SOPRANO_RECORDER(7, "Soprano Recorder"), ALTO_FLUTE(7, "Alto Flute"),
     Ab(8, "Ab Instrument"), G$(8, "G# Instrument"),
     A(9, "A Instrument"),
     Bb(10, "Bb Instrument"), A$(10, "A# Instrument"), CLARINET(10), SOPRANO_SAXOPHONE(10, "Soprano Sax"), TRUMPET(10), CORNET(10), FLUGELHORN(10), BASS_CLARINET(10, "Bass Clarinet"), TENOR_SAXOPHONE(10, "Tenor Sax"), EUPHONIUM(10), BARITONE(10), TROMBONE(10), BASS_TROMBONE(10, "Bass Trombone"), Bb_TUBA(10, "Bb Tuba"), CONTRABASS_CLARINET(10, "Contrabass Clarinet"),
@@ -29,7 +29,7 @@ public enum Instrument {
         this.transposition = transposition;
     }
 
-    Instrument(int transposition, String name){
+    Instrument(int transposition, String name) {
         this.transposition = transposition;
         this.name = name;
     }
@@ -40,10 +40,9 @@ public enum Instrument {
         return transposition - 12;
     }
 
-    //    public static int transposePitch(int pitch, Instrument instrument, boolean up){
-    //        pitch += instrument.getTransposition(up);
-    //        if(pitch )
-    //    }
+    public int getTransposition() {
+        return transposition;
+    }
 
     @Override
     public String toString() {
@@ -60,4 +59,36 @@ public enum Instrument {
         return comparator;
     }
 
+    public static Instrument getInstrumentFromValue(int noteValue) {
+        if(noteValue < 0)
+            throw new IllegalArgumentException("noteValue must be greater than or equal to 0");
+        switch (noteValue) {
+            case 0:
+                return C;
+            case 1:
+                return Db;
+            case 2:
+                return D;
+            case 3:
+                return Eb;
+            case 4:
+                return E;
+            case 5:
+                return F;
+            case 6:
+                return Gb;
+            case 7:
+                return G;
+            case 8:
+                return Ab;
+            case 9:
+                return A;
+            case 10:
+                return Bb;
+            case 11:
+                return B;
+            default:
+                return getInstrumentFromValue(noteValue - 12);
+        }
+    }
 }

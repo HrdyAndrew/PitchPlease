@@ -17,6 +17,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 import tech.pitchplease.pitchplease.composer.ComposerActivity;
+import tech.pitchplease.pitchplease.pitchtraining.PitchTrainingActivity;
 
 
 public class MenuActivity extends AppCompatActivity {
@@ -50,9 +51,9 @@ public class MenuActivity extends AppCompatActivity {
         });
 
         //createViewActivitySwitch(R.id.btnPitchPlayer, ClassName.class, "MyTag", new String[]{});
-        //createViewActivitySwitch(R.id.btnPitchGuesser, ClassName.class, "MyTag", new String[]{});
+        createViewActivitySwitch(findViewById(R.id.btnPitchGuesser), PitchTrainingActivity.class, "pitchGuesserTag");
         //createViewActivitySwitch(R.id.btnIntervalGuesser, ClassName.class, "MyTag", new String[]{});
-        createViewActivitySwitch(findViewById(R.id.btnCompGuesser), ComposerActivity.class, "composerTag"/*, new String[]{}*/);
+        createViewActivitySwitch(findViewById(R.id.btnCompGuesser), ComposerActivity.class, "composerTag");
     }
 
     @Override
