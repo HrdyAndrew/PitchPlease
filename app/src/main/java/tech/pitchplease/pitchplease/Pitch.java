@@ -172,4 +172,7 @@ public class Pitch {
         }
     }
 
+    public static double tune(double freq, double cents) {
+        return freq * Math.pow(2, cents/1200);
+    }
 }
