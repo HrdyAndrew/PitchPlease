@@ -108,6 +108,15 @@ public class PitchTrainingActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onStop() {
+        if (playPitch) {
+            audioTrack.stop();
+        }
+        countdown.cancel();
+        super.onStop();
+    }
+
     void genTone(){
         // fill out the array
         for (int i = 0; i < numSamples; ++i) {

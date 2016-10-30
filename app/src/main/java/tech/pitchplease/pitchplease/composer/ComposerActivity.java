@@ -15,10 +15,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -265,6 +261,7 @@ public class ComposerActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        countDown.cancel();
         super.onStop();
     }
 
