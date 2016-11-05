@@ -142,4 +142,10 @@ Bernard_Herrmann
 5bUj39bg0zEbRzjUEISMG9
 
 </string>
+    <string name="a">A</string>
+    <string name="c">C</string>
+    <string name="drag_the_bar_to_the_pitch_being_played">Drag the bar to the pitch being played</string>
+    <string name="score_0">Score: 0</string>
+    <string name="start">Start</string>
+    <string name="submit">Submit</string>
 </resources>
