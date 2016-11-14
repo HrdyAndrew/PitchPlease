@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_pitch_player"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="tech.pitchplease.pitchplease.pitchplayer.PitchPlayerActivity"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:text="Drag the bar to play a pitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:id="@+id/pitchplayerTextDesc"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAlignment="center"
+        android:textColor="@color/colorText"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/noteText"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/pitchtrainingBtnStart"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorText"
+        android:textAllCaps="false"
+        tools:visibility="invisible"
+        android:text="C"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:id="@+id/pitchplayerBtnStart"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:layout_below="@+id/pitchplayerTextDesc"
+        android:layout_centerHorizontal="true"
+        tools:ignore="HardcodedText" />
+
+    <SeekBar
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="11"
+        android:progress="0"
+        android:id="@+id/pitchPlayerSeek"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/noteText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:visibility="invisible" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:id="@+id/pitchPlayerBtnSubmit"
+        tools:visibility="invisible"
+        android:visibility="invisible"
+        android:layout_below="@+id/pitchPlayerSeek"
+        android:layout_alignLeft="@+id/pitchplayerBtnStart"
+        android:layout_alignStart="@+id/pitchplayerBtnStart"
+        tools:ignore="HardcodedText" />
+</RelativeLayout>
