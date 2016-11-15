@@ -28,26 +28,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/noteText"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:layout_below="@+id/pitchtrainingBtnStart"
         android:layout_centerHorizontal="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorText"
         android:textAllCaps="false"
-        tools:visibility="invisible"
+        tools:visibility="visible"
         android:text="C"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:text="Start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:id="@+id/pitchplayerBtnStart"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorText"
-        android:layout_below="@+id/pitchplayerTextDesc"
-        android:layout_centerHorizontal="true"
         tools:ignore="HardcodedText" />
 
     <SeekBar
@@ -61,20 +49,19 @@
         android:layout_below="@+id/noteText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        tools:visibility="invisible" />
+        tools:visibility="visible" />
 
     <Button
-        android:text="Submit"
+        android:text="Play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@color/colorAccent"
         android:textColor="@color/colorText"
         android:id="@+id/pitchPlayerBtnSubmit"
-        tools:visibility="invisible"
-        android:visibility="invisible"
+        tools:visibility="visible"
+        android:visibility="visible"
+        tools:ignore="HardcodedText"
         android:layout_below="@+id/pitchPlayerSeek"
-        android:layout_alignLeft="@+id/pitchplayerBtnStart"
-        android:layout_alignStart="@+id/pitchplayerBtnStart"
-        tools:ignore="HardcodedText" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

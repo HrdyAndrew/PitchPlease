@@ -27,7 +27,7 @@ public class PitchTrainingActivity extends AppCompatActivity {
     private Button btnSubmit;
     private CountDownTimer countdown;
 
-    private Pitch correctPitch = new Pitch(0, Pitch.PitchName.C);
+    private Pitch correctPitch = new Pitch(4, Pitch.PitchName.C);
     private int score = 0;
     private int rounds = 0;
 

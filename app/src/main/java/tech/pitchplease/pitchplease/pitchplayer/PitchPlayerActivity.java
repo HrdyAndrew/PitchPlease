@@ -17,10 +17,9 @@ import tech.pitchplease.pitchplease.R;
 public class PitchPlayerActivity extends AppCompatActivity {
     private SeekBar noteSeekBar;
     private TextView noteText;
-    private Button btnStart;
     private Button btnSubmit;
 
-    private Pitch correctPitch = new Pitch(0, Pitch.PitchName.C);
+    private Pitch correctPitch = new Pitch(4, Pitch.PitchName.C);
 
     private static final int GUESS_TIME = 30; //In seconds
 
@@ -45,7 +44,6 @@ public class PitchPlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pitchplayer);
         noteSeekBar = (SeekBar) findViewById(R.id.pitchPlayerSeek);
         noteText = (TextView) findViewById(R.id.noteText);
-        btnStart = (Button) findViewById(R.id.pitchplayerBtnStart);
         btnSubmit = (Button) findViewById(R.id.pitchPlayerBtnSubmit);
 
         noteSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -65,13 +63,6 @@ public class PitchPlayerActivity extends AppCompatActivity {
             }
         });
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                renderGameIcons(true);
-            }
-        });
-
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +73,6 @@ public class PitchPlayerActivity extends AppCompatActivity {
                 playChosenPitch();
             }
         });
-        renderGameIcons(false);
     }
 
 
@@ -151,18 +141,5 @@ public class PitchPlayerActivity extends AppCompatActivity {
             }
         });
         thread.start();
-    }
-
-    /**
-     * Renders icons for base playing screen
-     *
-     * @param bool If true sets icons for game playing state, else sets to start state.
-     */
-    private void renderGameIcons(boolean bool) {
-        btnStart.setVisibility(bool ? View.GONE : View.VISIBLE);
-
-        btnSubmit.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
-        noteSeekBar.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
-        noteText.setVisibility(bool ? View.VISIBLE : View.INVISIBLE);
     }
 }
