@@ -13,7 +13,7 @@
     android:background="@color/colorPrimaryDark">
 
     <TextView
-        android:text="Score: 0"
+        android:text="@string/score_0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -23,7 +23,7 @@
         android:textColor="@color/colorText" />
 
     <TextView
-        android:text="Drag the bar to the pitch being played"
+        android:text="@string/drag_the_bar_to_the_pitch_being_played"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -45,10 +45,10 @@
         android:textColor="@color/colorText"
         android:textAllCaps="false"
         tools:visibility="invisible"
-        android:text="C" />
+        android:text="@string/c" />
 
     <Button
-        android:text="Start"
+        android:text="@string/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -72,7 +72,7 @@
         tools:visibility="invisible" />
 
     <Button
-        android:text="Submit"
+        android:text="@string/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
