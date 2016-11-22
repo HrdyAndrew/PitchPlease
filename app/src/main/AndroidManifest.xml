@@ -38,6 +38,7 @@
         </activity>
         <activity android:name=".pitchplayer.PitchPlayerActivity"></activity>
         <activity android:name=".pitchtraining.PitchTrainingActivity"></activity>
+        <activity android:name=".intervaltraining.IntervalTrainingActivity"></activity>
     </application>
 
 </manifest>
