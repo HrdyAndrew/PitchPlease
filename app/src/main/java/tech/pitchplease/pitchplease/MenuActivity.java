@@ -45,14 +45,14 @@ public class MenuActivity extends AppCompatActivity {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPreferences);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabPreferences);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         createViewActivitySwitch(findViewById(R.id.btnPitchPlayer), PitchPlayerActivity.class, "pitchPlayerTag");
         createViewActivitySwitch(findViewById(R.id.btnPitchGuesser), PitchTrainingActivity.class, "pitchGuesserTag");

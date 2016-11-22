@@ -37,7 +37,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         app:backgroundTint="@color/colorAccent"
-        app:rippleColor="@color/colorRipple" />
+        app:rippleColor="@color/colorRipple"
+        android:visibility="invisible"
+        android:clickable="false" />
 
     <Button
         android:text="@string/pitch_training_title"
@@ -49,32 +51,6 @@
         android:layout_marginTop="30dp"
         android:id="@+id/btnPitchGuesser"
         android:width="250dp"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorText" />
-
-    <Button
-        android:text="@string/interval_training_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnPitchGuesser"
-        android:layout_alignLeft="@+id/btnPitchGuesser"
-        android:layout_alignStart="@+id/btnPitchGuesser"
-        android:layout_marginTop="30dp"
-        android:id="@+id/btnIntervalGuesser"
-        android:width="250dp"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorText" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/btnCompGuesser"
-        android:width="250dp"
-        android:layout_below="@+id/btnIntervalGuesser"
-        android:layout_alignLeft="@+id/btnIntervalGuesser"
-        android:layout_alignStart="@+id/btnIntervalGuesser"
-        android:text="@string/composer_id_title"
         android:background="@color/colorAccent"
         android:textColor="@color/colorText" />
 
@@ -101,5 +77,33 @@
         android:layout_marginBottom="20dp"
         android:visibility="visible">
     </com.google.android.gms.ads.AdView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCompGuesser"
+        android:width="250dp"
+        android:text="@string/composer_id_title"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:layout_below="@+id/btnPitchGuesser"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <Button
+        android:text="@string/interval_training_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnIntervalGuesser"
+        android:width="250dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorText"
+        android:visibility="invisible"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/btnCompGuesser"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:clickable="false" />
 
 </RelativeLayout>
