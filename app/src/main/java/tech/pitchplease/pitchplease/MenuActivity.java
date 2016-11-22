@@ -19,6 +19,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.location.SettingsApi;
 
 import tech.pitchplease.pitchplease.composer.ComposerActivity;
+import tech.pitchplease.pitchplease.intervaltraining.IntervalTrainingActivity;
 import tech.pitchplease.pitchplease.pitchplayer.PitchPlayerActivity;
 import tech.pitchplease.pitchplease.pitchtraining.PitchTrainingActivity;
 import tech.pitchplease.pitchplease.settings.SettingsActivity;
@@ -56,6 +57,7 @@ public class MenuActivity extends AppCompatActivity {
 
         createViewActivitySwitch(findViewById(R.id.btnPitchPlayer), PitchPlayerActivity.class, "pitchPlayerTag");
         createViewActivitySwitch(findViewById(R.id.btnPitchGuesser), PitchTrainingActivity.class, "pitchGuesserTag");
+        createViewActivitySwitch(findViewById(R.id.btnIntervalGuesser), IntervalTrainingActivity.class, "intervalGuesserTag");
         //createViewActivitySwitch(R.id.btnIntervalGuesser, ClassName.class, "MyTag", new String[]{});
         createViewActivitySwitch(findViewById(R.id.btnCompGuesser), ComposerActivity.class, "composerTag");
     }
